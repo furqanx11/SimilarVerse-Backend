@@ -17,3 +17,6 @@ def get_similar_verse(number=None, arabic=None):
         response = quran_compiled[quran_compiled['ArabicEncoded'].str.contains(arabic, na=False)][['Arabic', 'EnglishTranslation', 'UrduTranslation', 'SurahNo', 'AyahNo']].values
         return response
 
+def get_verses_by_surah(surah_no: int):
+    return quran_compiled[quran_compiled['SurahNo'] == surah_no][['Arabic', 'EnglishTranslation', 'UrduTranslation', 'SurahNo', 'AyahNo']]
+    
