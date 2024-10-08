@@ -33,6 +33,3 @@ def main():
     """Main function to ensure data folder exists and download necessary files."""
     ensure_data_folder_exists(data_folder)
     check_and_download_file(quran_file, quran_compiled_url)
-
-if __name__ == "__main__":
-    main()
