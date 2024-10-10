@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException, Query
 from app.schemas.schema import VerseNumber, ArabicText
 from app.utils.similar_verse import get_similar_verse, get_verses_by_surah
+import os
+from fastapi.responses import FileResponse
 
 
 router = APIRouter()
@@ -65,3 +67,21 @@ def get_verses_by_surah_no(surah_no: int, page: int = Query(1, ge=1), page_size:
             for res in paginated_response.values
         ]
     }
+
+
+audio_files_path = 'data/audio'
+
+@router.get("/play/{surah_no}/{ayah_no}")
+def get_audio(surah_no: int, ayah_no: int):
+    # Construct the file name
+    surah_str = f"{surah_no:03}"
+    ayah_str = f"{ayah_no:03}"
+
+    file_name = f"{surah_str}{ayah_str}.mp3"
+    file_path = os.path.join(audio_files_path, file_name)
+    
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="Audio file not found")
+    
+    return FileResponse(file_path, media_type='audio/mpeg')
