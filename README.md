@@ -16,15 +16,15 @@ SimilarVerse-Backend/
 │
 ├── app/
 │   ├── middleware/
-│   │   └── cors.py             # CORS handling
+│   │   └── cors.py              # CORS handling
 │   ├── routers/
-│   │   └── routes.py           # API route definitions
+│   │   └── routes.py            # API route definitions
 │   ├── schemas/
-│   │   └── schema.py           # Pydantic models
+│   │   └── schema.py            # Pydantic models
 │   └── utils/
-│       ├── data_ingestion.py    # Script for data ingestion
-│       ├── data_preprocessing.py# Script for data preprocessing
-│       └── similar_verse.py     # Core logic for similar verse matching
+│       ├── data_ingestion.py     # Script for data ingestion
+│       ├── data_preprocessing.py # Script for data preprocessing
+│       └── similar_verse.py      # Core logic for similar verse matching
 │
 ├── data/
 │   ├── audio/                   # Quranic audio files
@@ -53,6 +53,7 @@ SimilarVerse-Backend/
 
 ### API Endpoints
 ** Search For Similar Verses **
+
 - To search by verse number pass the verse as {"Surah_No" : 5, "Ayah_No" : 2} in the body in JSON
 
 ``` POST : / ```
